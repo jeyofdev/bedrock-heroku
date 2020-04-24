@@ -50,8 +50,8 @@ define('WP_ENV', env('WP_ENV') ?: 'production');
 /**
  * URLs
  */
-Config::define('WP_HOME', env('WP_HOME'));
-Config::define('WP_SITEURL', env('WP_SITEURL'));
+Config::define('WP_HOME', getenv('WP_HOME'));
+Config::define('WP_SITEURL', getenv('WP_SITEURL'));
 
 /**
  * Custom Content Directory
@@ -71,8 +71,9 @@ Config::define('DB_CHARSET', 'utf8mb4');
 Config::define('DB_COLLATE', '');
 $table_prefix = env('DB_PREFIX') ?: 'wp_';
 
-if (env('DATABASE_URL')) {
-    $dsn = (object) parse_url(env('DATABASE_URL'));
+
+if ($_ENV["DATABASE_URL"]) {
+    $dsn = (object) parse_url($_ENV["DATABASE_URL"]);
 
     Config::define('DB_NAME', substr($dsn->path, 1));
     Config::define('DB_USER', $dsn->user);
@@ -80,17 +81,19 @@ if (env('DATABASE_URL')) {
     Config::define('DB_HOST', isset($dsn->port) ? "{$dsn->host}:{$dsn->port}" : $dsn->host);
 }
 
+
 /**
  * Authentication Unique Keys and Salts
  */
-Config::define('AUTH_KEY', env('AUTH_KEY'));
-Config::define('SECURE_AUTH_KEY', env('SECURE_AUTH_KEY'));
-Config::define('LOGGED_IN_KEY', env('LOGGED_IN_KEY'));
-Config::define('NONCE_KEY', env('NONCE_KEY'));
-Config::define('AUTH_SALT', env('AUTH_SALT'));
-Config::define('SECURE_AUTH_SALT', env('SECURE_AUTH_SALT'));
-Config::define('LOGGED_IN_SALT', env('LOGGED_IN_SALT'));
-Config::define('NONCE_SALT', env('NONCE_SALT'));
+Config::define('AUTH_KEY', getenv('AUTH_KEY'));
+Config::define('SECURE_AUTH_KEY', getenv('SECURE_AUTH_KEY'));
+Config::define('LOGGED_IN_KEY', getenv('LOGGED_IN_KEY'));
+Config::define('NONCE_KEY', getenv('NONCE_KEY'));
+Config::define('AUTH_SALT', getenv('AUTH_SALT'));
+Config::define('SECURE_AUTH_SALT', getenv('SECURE_AUTH_SALT'));
+Config::define('LOGGED_IN_SALT', getenv('LOGGED_IN_SALT'));
+Config::define('NONCE_SALT', getenv('NONCE_SALT'));
+
 
 /**
  * Custom Settings
