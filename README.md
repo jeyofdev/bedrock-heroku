@@ -21,10 +21,14 @@ create a Heroku app
 $ heroku create your-project-name --region eu
 ```
 
-Link the github account via the deploy tab of heroku. See heroku [doc](https://devcenter.heroku.com/articles/github-integration).
+Link the github account via the deploy tab of heroku. 
 
-Set environment variables. See heroku [doc](https://devcenter.heroku.com/articles/config-vars)
+See heroku [doc](https://devcenter.heroku.com/articles/github-integration).
+
+Set environment variables. See heroku [doc](https://devcenter.heroku.com/articles/config-vars).
+
 List of variables :
+
 * AUTH_KEY
 * AUTH_SALT
 * LOGGED_IN_KEY
